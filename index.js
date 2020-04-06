@@ -1,16 +1,9 @@
 
-
-
-
 function checkSalaryTotal(lineup) {
   const combinedSalaryCap = 45000
   const combinedSalary = lineup.map((lineup) => lineup.salary).reduce((total, salary) => total + salary, 0)
 
-  if (combinedSalaryCap > combinedSalary) {
-    return true
-  } else {
-    return false
-  }
+  return (combinedSalaryCap > combinedSalary)
 }
 
 function checkTeams(lineup) {
@@ -29,11 +22,8 @@ function checkTeams(lineup) {
       highestSteak = currentCount
     }
   }
-  if (highestSteak <= 2) {
-    return true
-  } else {
-    return false
-  }
+
+  return highestSteak <= 2
 }
 
 function checkGames(lineup) {
@@ -52,11 +42,8 @@ function checkGames(lineup) {
       highestSteak = currentCount
     }
   }
-  if (highestSteak <= 3) {
-    return true
-  } else {
-    return false
-  }
+
+  return highestSteak <= 3
 }
 
 function checkPositions(lineup) {
@@ -71,26 +58,12 @@ function checkPositions(lineup) {
 function checkNumberPlayers(lineup) {
   const players = lineup.map((lineup) => lineup.name)
 
-  if (players.length === 9) {
-    return true
-  } else {
-    return false
-  }
+  return players.length === 9
 }
 
 
 const validateLineUp = (lineup) => {
-  const positions = checkPositions(lineup)
-  const games = checkGames(lineup)
-  const teams = checkTeams(lineup)
-  const salaryTotal = checkSalaryTotal(lineup)
-  const numPlayers = checkNumberPlayers(lineup)
-
-  if (positions === true && games === true && teams === true && salaryTotal === true && numPlayers === true) {
-    return true
-  } else {
-    return false
-  }
+  return checkPositions(lineup) && checkGames(lineup) && checkTeams(lineup) && checkSalaryTotal(lineup) && checkNumberPlayers(lineup)
 }
 
 module.exports = validateLineUp
