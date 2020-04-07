@@ -1,9 +1,7 @@
 
 function checkSalaryTotal(lineup) {
-  const combinedSalaryCap = 45000
-  const combinedSalary = lineup.map((lineup) => lineup.salary).reduce((total, salary) => total + salary, 0)
 
-  return (combinedSalaryCap > combinedSalary)
+  return (45000 > lineup.map((lineup) => lineup.salary).reduce((total, salary) => total + salary, 0))
 }
 
 function checkTeams(lineup) {
@@ -50,9 +48,7 @@ function checkPositions(lineup) {
   const properPositionLineup = ['C', 'OF', 'OF', 'OF', 'P', 'SS', '1B', '2B', '3B']
   const positions = lineup.map((lineup) => lineup.position)
 
-  let positionCheck = positions.every(element => properPositionLineup.indexOf(element) > -1)
-
-  return positionCheck
+  return positions.every(element => properPositionLineup.indexOf(element) > -1)
 }
 
 function checkNumberPlayers(lineup) {
@@ -63,6 +59,7 @@ function checkNumberPlayers(lineup) {
 
 
 const validateLineUp = (lineup) => {
+
   return checkPositions(lineup) && checkGames(lineup) && checkTeams(lineup) && checkSalaryTotal(lineup) && checkNumberPlayers(lineup)
 }
 
